@@ -1,11 +1,19 @@
 package com.studentmanagement.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Student")
@@ -22,6 +30,19 @@ public class Student {
     private String department;
     @Column(name = "PhoneNumber")
     private long phoneNumber;
+
+    // many subjects
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "student")
+    @JsonIgnore
+    private Set<StudentSubject> studentSubjects = new HashSet<>();
+
+    public Set<StudentSubject> getStudentSubjects() {
+        return studentSubjects;
+    }
+
+    public void setStudentSubjects(Set<StudentSubject> studentSubjects) {
+        this.studentSubjects = studentSubjects;
+    }
 
     public Student() {
     }

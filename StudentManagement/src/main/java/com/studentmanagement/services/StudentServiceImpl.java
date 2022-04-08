@@ -1,19 +1,25 @@
 package com.studentmanagement.services;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.studentmanagement.entities.Student;
+import com.studentmanagement.entities.StudentSubject;
 import com.studentmanagement.exception.ResourceNotFoundException;
 import com.studentmanagement.repository.StudentRepo;
+import com.studentmanagement.repository.SubjectRepo;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepo studentRepo;
+
+    @Autowired
+    private SubjectRepo subjectRepo;
 
     @Override
     public List<Student> getAllStudents() {
@@ -56,6 +62,12 @@ public class StudentServiceImpl implements StudentService {
         studentRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Buddy", "ID", String.valueOf(id)));
         studentRepo.deleteById(id);
 
+    }
+
+    @Override
+    public Student createStudent(Student student, Set<StudentSubject> studentSubject) {
+        this.studentRepo.fin
+        return null;
     }
 
 }

@@ -1,8 +1,10 @@
 package com.studentmanagement.services;
 
 import java.util.List;
+import java.util.Set;
 
 import com.studentmanagement.entities.Student;
+import com.studentmanagement.entities.StudentSubject;
 
 public interface StudentService {
 
@@ -17,4 +19,6 @@ public interface StudentService {
 //    public void deleteStudent(Long studentId);
     public void deleteStudent(long id);
 //    public List<Student> printbyname(String name);
+
+    public Student createStudent(Student student, Set<StudentSubject> studentSubject);
 }
