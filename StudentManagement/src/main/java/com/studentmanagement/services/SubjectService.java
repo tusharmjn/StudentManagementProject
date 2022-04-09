@@ -1,12 +1,18 @@
 package com.studentmanagement.services;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.studentmanagement.entities.Subject;
 
-@Service
 public interface SubjectService {
 
-    public Subject createsubject(Subject subject);
+    public List<Subject> getAllSubjects();
 
+    public Subject saveSubject(Subject subject);
+
+    public Subject getSubjectById(Long id);
+
+    public Subject updateSubject(Subject subject, long id);
+
+    public void deleteSubject(long id);
 }

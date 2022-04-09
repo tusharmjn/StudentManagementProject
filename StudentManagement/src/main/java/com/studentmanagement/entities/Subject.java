@@ -1,8 +1,16 @@
 package com.studentmanagement.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Subject")
@@ -12,17 +20,17 @@ public class Subject {
     private Long subjectId;
     private String subjectName;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "subject")
-//    @JsonIgnore
-//    private Set<StudentSubject> studentSubjects = new HashSet<>();
-//
-//    public Set<StudentSubject> getStudentSubjects() {
-//        return studentSubjects;
-//    }
-//
-//    public void setStudentSubjects(Set<StudentSubject> studentSubjects) {
-//        this.studentSubjects = studentSubjects;
-//    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "subject")
+    @JsonIgnore
+    private Set<StudentSubject> studentSubjects = new HashSet<>();
+
+    public Set<StudentSubject> getStudentSubjects() {
+        return studentSubjects;
+    }
+
+    public void setStudentSubjects(Set<StudentSubject> studentSubjects) {
+        this.studentSubjects = studentSubjects;
+    }
 
     public Subject() {
     }

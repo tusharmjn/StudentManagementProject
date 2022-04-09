@@ -1,13 +1,52 @@
 package com.studentmanagement;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.studentmanagement.entities.Student;
+import com.studentmanagement.entities.StudentSubject;
+import com.studentmanagement.entities.Subject;
+import com.studentmanagement.services.StudentService;
+import com.studentmanagement.services.SubjectService;
+
 @SpringBootApplication
-public class StudentManagementApplication {
+public class StudentManagementApplication implements CommandLineRunner {
+
+    @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private SubjectService subjectService;
 
     public static void main(String[] args) {
         SpringApplication.run(StudentManagementApplication.class, args);
+
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("test");
+        Subject sub1 = new Subject(Long.valueOf(1), "HINGLISH");
+        Subject sub2 = new Subject(Long.valueOf(2), "MECHATRONICS");
+        Subject sub3 = new Subject(Long.valueOf(3), "CHEM");
+
+        this.subjectService.saveSubject(sub2);
+        this.subjectService.saveSubject(sub1);
+
+        Student st1 = new Student("Tushar", "xyz@", "cse", 123);
+        Student st2 = new Student("Shobit", "xyzxc@", "civil", 321);
+
+        Set<StudentSubject> studentSubjects = new HashSet<StudentSubject>();
+        studentSubjects.add(new StudentSubject(st2, sub2));
+        studentSubjects.add(new StudentSubject(st2, sub1));
+        studentSubjects.add(new StudentSubject(st2, sub3));
+
+        Student student = this.studentService.saveStudent(st2, studentSubjects);
 
     }
 
