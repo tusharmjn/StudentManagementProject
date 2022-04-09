@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.studentmanagement.entities.Subject;
+import com.studentmanagement.exception.ResourceNotFoundException;
 import com.studentmanagement.repository.SubjectRepo;
 
 @Service
@@ -21,7 +22,7 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public List<Subject> getAllSubjects() {
-        return null;
+        return subjectRepo.findAll();
     }
 
     @Override
@@ -32,8 +33,8 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject getSubjectById(Long id) {
-
-        return null;
+        return subjectRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Subject", "ID", String.valueOf(id)));
     }
 
     @Override

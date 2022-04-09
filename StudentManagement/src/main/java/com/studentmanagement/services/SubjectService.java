@@ -15,4 +15,5 @@ public interface SubjectService {
     public Subject updateSubject(Subject subject, long id);
 
     public void deleteSubject(long id);
+
 }
