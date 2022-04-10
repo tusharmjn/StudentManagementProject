@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Student } from './student';
+import { Subjects } from './subject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
   
-  private baseURL="http://localhost:8080/api/v1/students"
+  private baseURL="http://localhost:8080/api/v1"
   constructor(private httpClient : HttpClient) { }
 
   getStudentsList(): Observable<Student[]>{
@@ -16,7 +17,7 @@ export class StudentService {
   }
 
   createStudent(student: Student): Observable<any>{
-    return this.httpClient.post(`${this.baseURL}`,student);
+    return this.httpClient.post(`${this.baseURL}/add_students`,student);
   }
 
   getStudentById(id:number):Observable<Student>{

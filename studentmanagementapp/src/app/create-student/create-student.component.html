@@ -26,8 +26,13 @@
             <input type="text" class ="form-control" id = "phoneNumber"
                 [(ngModel)] = "student.phoneNumber" name = "phoneNumber">
         </div>
-    
 
+        <div class="form-group" *ngFor="let students of student.subjectIds;">
+            <label>Enter Subjects</label>
+            <input type="text" class ="form-control" id = "subjectIds"
+                [(ngModel)] = "students" name = "subjectIds">
+        </div>
+    
         <button class = "btn btn-success" type ="submit">Submit</button>
     
     </form>

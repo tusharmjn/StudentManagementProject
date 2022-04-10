@@ -1,0 +1,21 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Add Subjects </h3>
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <label>Subject Id</label>
+            <input type="" class ="form-control" id = "subjectName"
+                [(ngModel)] = "subject.subjectId" name = "subjectName">
+        </div>
+    
+          
+        <div class="form-group">
+            <label>Subject Name</label>
+            <input type="" class ="form-control" id = "subjectName"
+                [(ngModel)] = "subject.subjectName" name = "subjectName">
+        </div>
+    
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 
