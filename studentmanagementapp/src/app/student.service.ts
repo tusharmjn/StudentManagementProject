@@ -13,23 +13,23 @@ export class StudentService {
   constructor(private httpClient : HttpClient) { }
 
   getStudentsList(): Observable<Student[]>{
-    return this.httpClient.get<Student[]>(`${this.baseURL}`)  
+    return this.httpClient.get<Student[]>(`${this.baseURL}/students`)  
   }
 
   createStudent(student: Student): Observable<any>{
-    return this.httpClient.post(`${this.baseURL}/add_students`,student);
+    return this.httpClient.post(`${this.baseURL}/add_student`,student);
   }
 
   getStudentById(id:number):Observable<Student>{
-    return this.httpClient.get<Student>(`${this.baseURL}/${id}`)
+    return this.httpClient.get<Student>(`${this.baseURL}/students/${id}`)
   }
 
   updateStudent(id: number, student: Student) : Observable<Student>{
-    return this.httpClient.put<Student>(`${this.baseURL}/${id}`,student);
+    return this.httpClient.put<Student>(`${this.baseURL}/students/${id}`,student);
   }
 
   deleteStudent(id: number): Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL}/${id}`); 
+    return this.httpClient.delete(`${this.baseURL}/students/${id}`); 
   }
   
 }

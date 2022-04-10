@@ -27,11 +27,12 @@
                 [(ngModel)] = "student.phoneNumber" name = "phoneNumber">
         </div>
 
-        <div class="form-group" *ngFor="let students of student.subjectIds;">
+        <div class="form-group" *ngFor="let subId of student.subjectIds; let i = index">
             <label>Enter Subjects</label>
-            <input type="text" class ="form-control" id = "subjectIds"
-                [(ngModel)] = "students" name = "subjectIds">
+            <input type="text" class ="form-control" id = "subjectIds_{{i}}"
+                [(ngModel)] = "student.subjectIds[i]" name = "subId_{{i}}">
         </div>
+        <button (click)="addSubject()">+</button>
     
         <button class = "btn btn-success" type ="submit">Submit</button>
     
