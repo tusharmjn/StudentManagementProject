@@ -32,4 +32,7 @@ export class StudentService {
     return this.httpClient.delete(`${this.baseURL}/students/${id}`); 
   }
   
+   getStudentsSubjectById(id:number):Observable<Student["subjectIds"][]>{
+    return this.httpClient.get<Student["subjectIds"][]>(`${this.baseURL}/studentsubject/${id}`);
+  }
 }

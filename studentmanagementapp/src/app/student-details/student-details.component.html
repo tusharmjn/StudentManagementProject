@@ -10,6 +10,15 @@
         <label> <b> Phone Number: </b></label> {{student.phoneNumber}}
     </div>
     <div>
-        <label> <b> Department </b></label> {{student.department}}
+        <label> <b> Department: </b></label> {{student.department}}
     </div>
+    <div>
+        <label> <b> Subjects:</b></label> 
+        <ul>
+            <li *ngFor = "let  subject of subjects" let i ="index">
+                {{subject.subjectName}}
+            </li>
+        </ul>
+    </div>
+    
 </div>

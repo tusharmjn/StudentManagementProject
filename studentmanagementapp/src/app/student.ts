@@ -6,4 +6,5 @@ export class Student {
     department!: string;
     phoneNumber!: number;
     subjectIds! : number[];
+//   static subjectIds: any;
 }
